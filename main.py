@@ -1,22 +1,30 @@
-from graphics import Window, Point, Line
-import random
-
+from graphics import Window
+from cell import Cell
+import time
 
 
 def main():
-	width, height = 1000, 600
-	num_points = 50
-	lines = []
-	for _ in range(num_points):
-		p1 = Point(random.randint(0, width), random.randint(0, height))
-		p2 = Point(random.randint(0, width), random.randint(0, height))
-		lines.append(Line(p1, p2))
+    win = Window(800, 600)
+
+    c = Cell(win)
+    c.has_left_wall = False
+    c.draw(50, 50, 100, 100)
+
+    c = Cell(win)
+    c.has_right_wall = False
+    c.draw(125, 125, 200, 200)
+
+    c = Cell(win)
+    c.has_bottom_wall = False
+    c.draw(225, 225, 250, 250)
+
+    c = Cell(win)
+    c.has_top_wall = False
+    c.draw(300, 300, 500, 500)
+
+    win.wait_for_close()
 
 
-	win = Window(width, height)
-	for line in lines:
-		win.draw_line(line, fill_color='red')
-	win.wait_for_close()
 
 if __name__ == "__main__":
 	main()
